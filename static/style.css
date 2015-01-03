@@ -71,6 +71,25 @@ html, body, h1, h2, h3, a {
     height: 100%;
 }
 
+section.empty {
+    background-color: #000000;
+    border: 4pt solid #00FF00;
+    text-align: center;
+    padding: 5pt;
+    width: 100%;
+}
+
+section.empty p {
+    font-family: 'BigNoodleTitling';
+    font-size: 80pt;
+    font-style: normal;
+    letter-spacing: 20pt;
+    padding: 5pt;
+    margin: 0pt;
+    text-align: center;
+    text-decoration: none;
+}
+
 .inventory_container .button {
     text-align: center;
 }
