@@ -47,7 +47,7 @@ class InventQryLabel(object):
 
         size_s = 18
         size_m = 26
-        size_l = 38
+        size_l = 32
 
         # create font images
         name_txt = None
