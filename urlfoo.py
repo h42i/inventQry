@@ -84,8 +84,9 @@ def add():
         db_add_url(request.json["uid"], request.json["url"])
 
         return "Ok.", 201
-    else
-        return render_template('urlfoo_info.html')
+    # TODO urlfoo info page
+    #else
+    #    return render_template('urlfoo_info.html')
 
 @app.route("/<uid>", methods=["PUT", "GET"])
 def modify_or_redirect(uid):
