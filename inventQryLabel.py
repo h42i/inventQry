@@ -45,15 +45,17 @@ class InventQryLabel(object):
 
         code = self.gen_qrcode(uid)
 
+        size_s = 18
+        size_m = 26
+        size_l = 38
+
         # create font images
         name_txt = None
         if name == "Harry Plotter":
             name_txt = self.mktext(name, "./static/font/harry.ttf", 50)
         else:
-            name_txt = self.mktext(name, "./static/font/Ubuntu-L.ttf", 43)
+            name_txt = self.mktext(name, "./static/font/Ubuntu-L.ttf", size_l)
 
-        size_s = 18
-        size_m = 26
         owner_label_txt = self.mktext("Owner",
                                       "./static/font/Ubuntu-L.ttf", size_s)
         owner_txt = self.mktext("{}".format(owner),
