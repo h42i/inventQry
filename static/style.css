@@ -271,6 +271,7 @@ section.empty p {
     color: #00FF00;
     font-family: 'BigNoodleTitling';
     font-size: 30pt;
+    margin-bottom: 5pt;
     width: 100%;
 }
 
@@ -280,7 +281,32 @@ section.empty p {
     color: #000000;
     font-family: 'BigNoodleTitling';
     font-size: 30pt;
+    padding: 4pt;
+    margin-bottom: 5pt;
     width: 100%;
+}
+
+.form_button input:hover {
+    background: #000000;
+    border: 4pt solid #00FF00;
+    color: #00FF00;
+    padding: 0pt;
+    margin-bottom: 5pt;
+}
+
+.form_delete_button input {
+    background: #000000;
+    border: 4pt solid #FF0000;
+    color: #FF0000;
+    font-family: 'BigNoodleTitling';
+    font-size: 30pt;
+    margin-bottom: 5pt;
+    width: 100%;
+}
+
+.form_delete_button input:hover {
+    background: #FF0000;
+    color: #000000;
 }
 
 .message {
