@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<!-- Todo Permissions: Jede 'usage_rule' scheint eine weitere Spielart von Permission zu sein. Daraus folgt, dass eine entsprechende Ontologie stets die nächste neu eingegebene Rule aufnehmen muss. -->
+
 <div class="usage_rule_container">
 {% if modify %}
   <form method="POST" action="{{ request.path }}?id={{ usage_rule.id }}" class="usage_rule_form">

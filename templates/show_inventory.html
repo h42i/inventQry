@@ -10,7 +10,7 @@
     {% for thing in inventory %}
     <section class="thing">
       <h2>
-          <a title="{{ thing.name}}" href="{{ base_url + thing.uid[:8] }}">
+          <a property:"owl:Thing" title="{{ thing.name}}" href="{{ base_url + thing.uid[:8] }}">
           {{ thing.name }}
         </a>
       </h2>
@@ -27,7 +27,7 @@
             </b>
           </td>
           <td>
-            <a href="modify_person?id={{ thing.owner.id }}">
+            <a property="v:nickname" href="modify_person?id={{ thing.owner.id }}">
               {{ thing.owner.pseudonym }}
             </a>
           </td>
@@ -39,7 +39,7 @@
             </b>
           </td>
           <td>
-            <a href="modify_person?id={{ thing.contact.id }}">
+            <a rel="foaf:mbox" href="modify_person?id={{ thing.contact.id }}">
               {{ thing.contact.email}}
             </a>
           </td>
@@ -51,6 +51,7 @@
             </b>
           </td>
           <td>
+<!-- TODO: Wie Permissions einbauen? -->
             <a href="modify_usage_rule?id={{ thing.usage_rule.id }}">
               {{ thing.usage_rule.rule }}
             </a>

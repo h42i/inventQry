@@ -6,11 +6,11 @@
   <form method="POST" action="{{ request.path }}?id={{ person.id }}" class="person_form">
     <div class="form_input">
       <label for="pseudonym">Pseudonym</label>
-      <input name="pseudonym" type="text" value="{{ person.pseudonym }}">
+      <input property="v:nickname" name="pseudonym" type="text" value="{{ person.pseudonym }}">
     </div>
     <div class="form_input">
       <label for="email">E-Mail</label>
-      <input name="email" type="text" value="{{ person.email }}">
+      <input rel="foaf:mbox" name="email" type="text" value="{{ person.email }}">
     </div>
     <input name="id" type="hidden" value="{{ person.id }}">
     <div class="form_button">

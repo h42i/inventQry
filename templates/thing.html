@@ -6,13 +6,13 @@
   <form method="POST" action="{{ request.path }}?id={{ thing.id }}" class="thing_form">
     <div class="form_input">
       <label for="name">Name</label>
-      <input name="name" type="text" value="{{ thing.name }}">
+      <input property="owl:thing" name="name" type="text" value="{{ thing.name }}">
     </div>
     <div class="form_input">
     <label for="owner">Owner</label>
       <select name="owner" id="owner">
         {% for person in persons %}
-          <option value="{{ person.id }}" {{ "selected" if thing.owner == person.id else "" }}>{{ person.pseudonym }}</option>
+          <option property="v:nickname" value="{{ person.id }}" {{ "selected" if thing.owner == person.id else "" }}>{{ person.pseudonym }}</option>
         {% endfor %}
       </select>
     </div>
@@ -20,13 +20,13 @@
       <label for="contact">Contact</label>
       <select name="contact" id="contact">
         {% for person in persons %}
-          <option value="{{ person.id }}" {{ "selected" if thing.contact == person.id else "" }}>{{ person.pseudonym }}</option>
+          <option rel="foaf:mbox" value="{{ person.id }}" {{ "selected" if thing.contact == person.id else "" }}>{{ person.pseudonym }}</option>
         {% endfor %}
       </select>
     </div>
     <div class="form_input">
       <label for="owner">Permission</label>
-      <select name="usage_rule" id="usage_rule">
+      <select <!-- TODO: Wie Permissions einbauen? --> name="usage_rule" id="usage_rule">
         {% for usage_rule in usage_rules %}
           <option value="{{ usage_rule.id }}" {{ "selected" if thing.usage_rule == usage_rule.id }}>{{ usage_rule.rule }}</option>
         {% endfor %}
@@ -34,7 +34,7 @@
     </div>
     <div class="form_input">
       <label for="url">URL</label>
-      <input name="url" type="text" value="{{ thing.url }}">
+      <input property="foaf:homepage" name="url" type="text" value="{{ thing.url }}">
     </div>
     <input name="id" type="hidden" value="{{ thing.id }}">
     <div class="form_button">
@@ -49,13 +49,13 @@
   <form method="POST" action="{{ request.path }}" class="thing_form">
     <div class="form_input">
       <label for="name">Name</label>
-      <input name="name" type="text" value="">
+      <input property="owl:thing" name="name" type="text" value="">
     </div>
     <div class="form_input">
       <label for="owner">Owner</label>
       <select name="owner" id="owner">
         {% for person in persons %}
-          <option value="{{ person.id }}">{{ person.pseudonym }}</option>
+          <option property="v:nickname" value="{{ person.id }}">{{ person.pseudonym }}</option>
         {% endfor %}
       </select>
     </div>
@@ -63,7 +63,7 @@
       <label for="contact">Contact</label>
       <select name="contact" id="contact">
         {% for person in persons %}
-          <option value="{{ person.id }}">{{ person.pseudonym }}</option>
+          <option rel="foaf:mbox" value="{{ person.id }}">{{ person.pseudonym }}</option>
         {% endfor %}
       </select>
     </div>
@@ -71,13 +71,13 @@
       <label for="owner">Permission</label>
       <select name="usage_rule" id="usage_rule">
         {% for usage_rule in usage_rules %}
-          <option value="{{ usage_rule.id }}">{{ usage_rule.rule }}</option>
+          <option <!-- TODO: Permissions einarbeiten--> value="{{ usage_rule.id }}">{{ usage_rule.rule }}</option>
         {% endfor %}
       </select>
     </div>
     <div class="form_input">
       <label for="url">URL</label>
-      <input name="url" type="text">
+      <input property="foaf:homepage" name="url" type="text">
     </div>
     <input name="id" type="hidden" value="new_id">
     <div class="form_button">
