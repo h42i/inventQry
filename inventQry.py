@@ -122,7 +122,10 @@ def db_add_thing(name, owner, contact, usage_rule, url):
 
     headers = {'content-type': 'application/json'}
     payload = { "uid": uid[:8], "url": url }
-    requests.post("http://i.hasi.it/", data=json.dumps(payload), headers=headers)
+    r = requests.post("http://hasi.it/i/", data=json.dumps(payload), headers=headers)
+
+    if r.status_code != 201:
+        raise Exception("Could not create url layer.")
 
     c = storage.write("""INSERT INTO things
                          (name, owner, contact, usage_rule, uid, url)
@@ -144,7 +147,10 @@ def db_modify_thing(id, name, owner, contact, usage_rule, url):
     # TODO prevent sql injections
     headers = {'content-type': 'application/json'}
     payload = { "url": url }
-    requests.put("http://i.hasi.it/" + uid[:8], data=json.dumps(payload), headers=headers)
+    r = requests.put("http://hasi.it/i/" + uid[:8], data=json.dumps(payload), headers=headers)
+
+    if r.status_code != 200:
+        raise Exception("Could not update url layer.")
 
     c = storage.read("UPDATE things SET name=?, owner=?, contact=?, usage_rule=?, url=? WHERE id=?;", [name, owner, contact, usage_rule, url, id])
 
