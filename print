@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python2 dymo.py out.pbm > /dev/usb/lp0
+python dymo.py out.pbm > /dev/usb/lp0

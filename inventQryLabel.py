@@ -98,5 +98,5 @@ class InventQryLabel(object):
 
 if __name__ == "__main__":
     inventQryLabel = InventQryLabel((514, 196))
-    label = inventQryLabel.generate("1a2b")
+    label = inventQryLabel.generate("Name", "Owner", "Contact", "rule", "uid")
     inventQryLabel.print(label)
