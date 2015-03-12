@@ -3,7 +3,7 @@ import qrcode
 from PIL import Image, ImageDraw, ImageFont
 from subprocess import call
 
-base_url = "http://hasi.it/i/"
+base_url = "http://i.hasi.it/"
 
 class InventQryLabel(object):
     def __init__(self, label_size):

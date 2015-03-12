@@ -122,7 +122,7 @@ def db_add_thing(name, owner, contact, usage_rule, url):
 
     headers = {'content-type': 'application/json'}
     payload = { "uid": uid[:8], "url": url }
-    r = requests.post("http://hasi.it/i/", data=json.dumps(payload), headers=headers)
+    r = requests.post("http://i.hasi.it/", data=json.dumps(payload), headers=headers)
 
     if r.status_code != 201:
         raise Exception("Could not create url layer.")
