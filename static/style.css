@@ -190,13 +190,14 @@ html, body, h1, h2, h3, a {
 
 .inventory_container, .thing_container, .person_container, .usage_rule_container {
     display: block;
-    background: repeating-linear-gradient(
+/*    background: repeating-linear-gradient(
         -45deg,
         #0f0,
         #0f0 4pt,
         #000 4pt,
         #000 20pt
     );
+*/
     padding: 30pt 0 30pt 0;
     margin: 0;
     position: relative;
@@ -292,4 +293,8 @@ html, body, h1, h2, h3, a {
 
 .btn-stripe {
 
+}
+
+#NameInput {
+    font-family: 'Open Sans';
 }
