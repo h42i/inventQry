@@ -147,7 +147,7 @@ def db_modify_thing(id, name, owner, contact, usage_rule, url):
     # TODO prevent sql injections
     headers = {'content-type': 'application/json'}
     payload = { "url": url }
-    r = requests.put("http://hasi.it/i/" + uid[:8], data=json.dumps(payload), headers=headers)
+    r = requests.put("http://i.hasi.it/" + uid[:8], data=json.dumps(payload), headers=headers)
 
     if r.status_code != 200:
         raise Exception("Could not update url layer.")
