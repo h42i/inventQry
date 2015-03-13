@@ -10,7 +10,7 @@ class InventQryLabel(object):
         self.w = w = label_size[0]
         self.h = h = label_size[1]
 
-        self.qr_size = (h, h)
+        self.qr_size = (h - 8, h - 8)
         self.text_size = (w - h, h)
 
     def mktext(self, string, font, fontsize):
@@ -71,7 +71,7 @@ class InventQryLabel(object):
 
         # place image parts
         offset_x = 15
-        offset_y = self.h - 145
+        offset_y = self.h - 142
         step_s = 17
         step_m = 29
         im.paste(name_txt, (offset_x, 0))
@@ -87,7 +87,7 @@ class InventQryLabel(object):
         im.paste(permissions_label_txt, (offset_x, posy))
         posy += step_s
         im.paste(permissions_txt, (offset_x, posy))
-        im.paste(code, (self.w-self.h, 0))
+        im.paste(code, (self.w-self.h + 8, 8))
 
         # output needs to be W < H, so rotate
         final = im.rotate(90)
