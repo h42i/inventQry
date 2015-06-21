@@ -132,6 +132,7 @@ def db_add_thing(name, owner, contact, usage_rule, url):
                          VALUES (?, ?, ?, ?, ?, ?);""",
                       [name, owner, contact, usage_rule, uid, url])
 
+
 def db_add_person(pseudonym, email):
     # TODO prevent sql injections
     c = storage.write("INSERT INTO persons (pseudonym, email) VALUES (?, ?);", [pseudonym, email])
@@ -161,6 +162,9 @@ def db_modify_person(id, pseudonym, email):
 def db_modify_usage_rule(id, rule):
     # TODO prevent sql injections
     c = storage.read("UPDATE usage_rules SET rule=? WHERE id=?;", [rule, id])
+
+def db_delete_thing(id):
+    c = storage.write("DELETE FROM things WHERE id=?;", [id])
 
 # TODO add remove thing, person, usage_rule
 
@@ -250,6 +254,22 @@ def modify_thing():
 
     return render_template("thing.html", error=oops, modify=True, inventory=inventory, persons=persons, usage_rules=usage_rules, thing=thing)
 
+@app.route("/delete_thing", methods=["POST"])
+def delete_thing():
+    if request.method == "POST":
+        id = request.form["id"]
+        thing = db_get_thing_by_id(id)
+        owner = db_get_person_by_id(thing["owner"])
+        if id == None:
+            return render_template("error.html")
+        elif thing == None:
+            return render_template("error.html")
+        else:
+            db_delete_thing(id)
+            return render_template("thing.html", error=False, modify=False, delete=True, thing=thing, owner=owner["pseudonym"])
+
+
+
 @app.route("/add_person", methods=["GET", "POST"])
 def add_person():
     if request.method == "POST":
@@ -297,6 +317,9 @@ def modify_usage_rule():
         return render_template("error.html")
 
     return render_template("usage_rule.html", error=False, modify=True, usage_rule=usage_rule)
+
+
+
 
 if  __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, port=8002)

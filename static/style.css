@@ -255,7 +255,7 @@ section.empty p {
     padding-right: 5pt;
 }
 
-.form_input input {
+.form_input input, .form_input button {
     flex: 1;
     background: #000000;
     border: 0pt;
