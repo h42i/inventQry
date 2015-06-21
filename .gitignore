@@ -59,3 +59,6 @@ target/
 # inventQry local files
 *.pbm
 *.db
+
+# Mac-Finder specific files
+.DS_Store

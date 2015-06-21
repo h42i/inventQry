@@ -3,6 +3,7 @@
 
 <div class="thing_container">
 {% if modify %}
+
   <form method="POST" action="{{ request.path }}?id={{ thing.id }}" class="thing_form">
     <div class="form_input">
       <label for="name">Name</label>
@@ -40,12 +41,27 @@
     <div class="form_button">
       <input type="submit" value="Modify thing">
     </div>
-    <!-- TODO
+  </form>
+
+  <form method="post" action="/delete_thing" id="delete_form" class="thing_form">
     <div class="form_delete_button">
-      <input type="submit" value="Delete thing">
+      <input type="button" id="delete" value="Delete thing">
     </div>
-    -->
+    <input type="hidden" name="id" value="{{ thing.id }}">
+  </form>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("input#delete").click(function () {
+          if (confirm("Do you really want to delete \"{{ thing.name }}\"?")) {
+            $("form#delete_form").submit();
+          } else alert("Aborted!");
+        });
+      });
+    </script>
+
 {% else %}
+  {% if not delete %}
   <form method="POST" action="{{ request.path }}" class="thing_form">
     <div class="form_input">
       <label for="name">Name</label>
@@ -85,12 +101,15 @@
     </div>
   </form>
 {% endif %}
+{% endif %}
 {% if request.method == "POST" %}
   {% if error %}
     <p class="message">There was an error.</p>
   {% else %}
     {% if modify %}
       <p class="message">Thing has been modified.</p>
+    {% elif delete %}
+      <p class="message">{{ thing.name }} of {{ owner }} has been deleted!</p>
     {% else %}
       <p class="message">Thing has been added.</p>
     {% endif %}
