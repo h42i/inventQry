@@ -10,12 +10,12 @@
     {% for thing in inventory %}
     <section class="thing">
       <h2>
-          <a title="{{ thing.name}}" href="{{ base_url + thing.uid[:8] }}">
+        <a title="{{ thing.name}}" href="modify_thing?id={{ thing.owner.id }}">
           {{ thing.name }}
         </a>
       </h2>
       <h3>
-        <a href="modify_thing?id={{ thing.id }}">
+        <a href="{{ thing.id }}">
           {{ thing.uid }}
         </a>
       </h3>
@@ -27,7 +27,7 @@
             </b>
           </td>
           <td>
-            <a href="modify_person?id={{ thing.owner.id }}">
+            <a href="modify_person?id={{ base_url + thing.uid[:8] }}">
               {{ thing.owner.pseudonym }}
             </a>
           </td>
